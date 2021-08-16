@@ -3,7 +3,7 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    function showProductsList(array){
+    function showProductsList(array){ // misma function que en ejercicio 4.6
 
         let htmlContentToAppend = "";
         for(let i = 0; i < array.length; i++){
@@ -30,8 +30,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     }
 
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
+    //la funcion getJSONData esta en init.js aca la estoy llamando
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){ // resultObj es un nombre habitual
+        if (resultObj.status === "ok") 
         {
             productsArray = resultObj.data;
             //Muestro las categorías ordenadas
