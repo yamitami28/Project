@@ -12,18 +12,14 @@ document.addEventListener("DOMContentLoaded",function(e){
 
 function validarFormulario() {
     var usuario = document.getElementById('email').value;
-    if(usuario.length == 0) {
-        alert('Ingresa tu cuenta de email')
-        return;
-    }
     var clave = document.getElementById('password').value;
-    if (clave.length == 0){
-        alert('Ingresa tu contraseña');
+    if(usuario.length == 0 || clave.length == 0) {
+        alert('Ingresa todos los campos requeridos')
         return;
     }
     else {
-        alert("Bienvenido a tu e_Commerce favorito");
-        window.location.href = "./index.html";
+        //alert("Bienvenido a tu e_Commerce favorito");
+        window.location.href = "./home.html";
     }
     
 }

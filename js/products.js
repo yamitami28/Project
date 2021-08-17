@@ -41,53 +41,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
-
-
-
-
-
-
-
-    //PRODUCTS_URL
-
-//     fetch(PRODUCTS_URL) //get
-//     .then(response => response.json())
-//     .then(data => {
-// console.log(response)
-
-//         for (let i = 0; i < result.length; i++) {
-//             cars =result[i];
-
-
-//         let name = data[i].name;
-//         let description = data[i].description;
-//         let cost = data[i].cost;
-//         let currency = data[i].currency;
-//         let imgSrc = data[i].imgSrc;
-//         let soldCount = data[i].soldCount;
-       
-//         let tabla = "";
-
-//         tabla +=   `  
-//             <tr>
-//         <td>${name}</td>
-//         <td>${description}</td>
-//         <td>${cost}</td>
-//         <td>${currency}</td>
-//         <td>${soldCount}</td>
-//         <td>${imgSrc}</td>
-//             </tr>
-//       `
-//         document.getElementById("table").innerHTML += tabla;
-      
-//     }
-
-//     })
-    
-
-
-
-
-
 });
 
