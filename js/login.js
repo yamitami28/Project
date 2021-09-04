@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded",function(e){
 
     document.getElementById("button").onclick = function(e){
 
-        sessionStorage.setItem("usuario", document.getElementById("SU ID DEL IMPUT USUARIO").value);        validarFormulario()
+        sessionStorage.setItem("usuario", document.getElementById("email").value);        
+        validarFormulario()
     }
 })
 
@@ -17,7 +18,6 @@ function validarFormulario() {
         return;
     }
     else {
-        //alert("Bienvenido a tu e_Commerce favorito");
         window.location.href = "./home.html";
     }
     
