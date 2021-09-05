@@ -3,6 +3,8 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     
+   
+   
     function showProductsList(array){ // misma function que en ejercicio 4.6
 
         let htmlContentToAppend = "";

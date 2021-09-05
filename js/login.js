@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded",function(e){
 
     document.getElementById("button").onclick = function(e){
 
-        sessionStorage.setItem("usuarioDelEmail", document.getElementById("email").value);     
-        //validarFormulario()
+          
+       validarFormulario()
      
-        document.getElementById("usuario").innerHTML = sessionStorage.getItem("usuarioDelEmail");   
-        console.log(usuario)
+       // document.getElementById("usuario").innerHTML = sessionStorage.getItem("usuarioDelEmail");   
+
 
     }
 
@@ -23,6 +23,8 @@ function validarFormulario() {
         return;
     }
     else {
+
+        sessionStorage.setItem("usuarioDelEmail", usuario);  
         window.location.href = "./home.html";
     }
     
