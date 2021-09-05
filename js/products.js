@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let htmlContentToAppend = "";
         for(let i = 0; i < array.length; i++){
             let products = array[i];
-
-            
+  
             
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     <div class="col-3">
                         <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail"   >
                     </div>
+                    
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ products.name +`</h4>
@@ -24,14 +24,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
                             
                         </div>
                        
-                        
-                        
-    <p> `+ products.description+ ` </p>
-    <small class="text-muted"> Ejemplares vendidos: ` + products.soldCount +` </small>
-                    </div> 
-                    
-                </div>
-                
+                        <div>
+                            <p> `+ products.description+ ` </p>
+                            <small class="text-muted"> Ejemplares vendidos: ` + products.soldCount +` </small>
+                        </div>
+                    </div>    
+                </div>        
             </div>
             `
     
@@ -85,36 +83,42 @@ document.getElementById("sortByCount").onclick = function(e){
     showProductsList(result);
 }
 
+var minCost = undefined;
+var maxCost = undefined;
 
-
-function showCategoriesList(){
+function showFilterList(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let category = currentCategoriesArray[i];
+    for(let i = 0; i < productsArray.length; i++){
+        let products = productsArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
+        if (((minCost == undefined) || (minCost != undefined && parseInt(products.cost) >= minCost)) &&
+            ((maxCost == undefined) || (maxCost != undefined && parseInt(products.cost) <= maxCost))){
 
             htmlContentToAppend += `
-            <a href="category-info.html" class="list-group-item list-group-item-action">
+            <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+                        <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail"   >
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ category.name +`</h4>
-                            <small class="text-muted">` + category.productCount + ` artículos</small>
-                        </div>
-                        <p class="mb-1">` + category.description + `</p>
-                    </div>
+                            <h4 class="mb-1">`+ products.name +`</h4>
+                            <small class="text-muted"> `+ products.currency +` ` + products.cost + `  </small>
+                            
+                        </div>                      
+                        
+    <p> `+ products.description+ ` </p>
+    <small class="text-muted"> Ejemplares vendidos: ` + products.soldCount +` </small>
+                    </div> 
+                    
                 </div>
-            </a>
+                
+            </div>
             `
         }
 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("list").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -123,8 +127,7 @@ function showCategoriesList(){
 
 document.getElementById("rangeFilterCost").addEventListener("click", function(){
     //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
-    var minCost = undefined;
-    var maxCost = undefined;
+
     minCost = document.getElementById("rangeFilterCostMin").value;
     maxCost = document.getElementById("rangeFilterCostMax").value;
 
@@ -142,7 +145,7 @@ document.getElementById("rangeFilterCost").addEventListener("click", function(){
         maxCost = undefined;
     }
 
-    showProductsList();
+    showFilterList();
 });
 
 

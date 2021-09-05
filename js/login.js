@@ -5,9 +5,14 @@ document.addEventListener("DOMContentLoaded",function(e){
 
     document.getElementById("button").onclick = function(e){
 
-        sessionStorage.setItem("usuario", document.getElementById("email").value);        
-        validarFormulario()
+        sessionStorage.setItem("usuarioDelEmail", document.getElementById("email").value);     
+        //validarFormulario()
+     
+        document.getElementById("usuario").innerHTML = sessionStorage.getItem("usuarioDelEmail");   
+        console.log(usuario)
+
     }
+
 })
 
 function validarFormulario() {
