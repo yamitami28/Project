@@ -108,17 +108,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
  });
 
- window.onload = function fechaPagina(){
-    var fecha = new Date(); //Fecha actual
-    var mes = fecha.getMonth()+1; //obteniendo mes
-    var dia = fecha.getDate(); //obteniendo dia
-    var ano = fecha.getFullYear(); //obteniendo año
-    if(dia<10)
-      dia='0'+dia; //agrega cero si el menor de 10
-    if(mes<10)
-      mes='0'+mes //agrega cero si el menor de 10
-    document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
-  }
+
 
  document.addEventListener("DOMContentLoaded", function (e) {
 
@@ -126,9 +116,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     boton.addEventListener("click", function(){
 
-    var comentarioNuevo = document.getElementById("comentarioNuevo").value;
-    var usuarioNuevo = document.getElementById("usuarioNuevo").value;
-    var fechaNueva = document.getElementById('fechaActual').value;
+        let cantidadEstrellas = document.getElementById("cantidadEstrellas").value;
+
+        var estrellaNueva = "";
+        for (let k = 0; k < cantidadEstrellas; k++) 
+                
+                estrellaNueva += `<span class="fa fa-star marcado">  </span>`
+
+    let comentarioNuevo = document.getElementById("comentarioNuevo").value;
+    let usuarioNuevo = document.getElementById("usuarioNuevo").value;
+    let fechaNueva = new Date()
+    let fecha = fechaNueva.toLocaleString()
+
 
     document.getElementById("comentarioNuevo").value = "";
     document.getElementById("usuarioNuevo").value = "";
@@ -137,20 +136,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
     
     nuevoComentario += `
     
-    <div id="generaComentario">
     <div class="list-group-item list-group-item-action">
     <div class="container mt-5">
-                <dd> <p>` + usuarioNuevo + ` &nbsp; <small class="text-muted"> ` + fechaNueva + `</small> </p>
+                <dd> 
+                    <p>` + usuarioNuevo + ` &nbsp; <small class="text-muted"> ` + fecha + `</small> </p>
                 </dd>    
-
                  <dd>
-                     <p> ` + comentarioNuevo + `</p>
+                    <p> ` + comentarioNuevo + `</p>
                  </dd>
+                <dd>
+                    <p> ` +estrellaNueva +`</p>
+                </dd>
             </div>        
         </div>
     </div>
     `
-    document.getElementById("generaComentario").innerHTML += nuevoComentario
+    document.getElementById("comment").innerHTML += nuevoComentario
 
     });
 });
