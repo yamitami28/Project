@@ -59,6 +59,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
         for(let i = 0; i < array.length; i++){
             let comments = array[i];
   
+            var puntaje = comments.score
+            var estrella = "";
+
+            for (let j = 0; j < puntaje; j++) 
+                
+                estrella += `
+                
+                <span class="fa fa-star marcado">  </span>
+
+                `
+            
             
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
@@ -70,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                              <p> ` + comments.description + `</p>
                          </dd>
                         <dd>
-                            <span class="fa fa-star marcado"> ` + comments.score + `</span>
+                            <div> ` + estrella + `</div>
                         </dd>
                 </div>        
             </div>
@@ -97,6 +108,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
  });
 
+ window.onload = function fechaPagina(){
+    var fecha = new Date(); //Fecha actual
+    var mes = fecha.getMonth()+1; //obteniendo mes
+    var dia = fecha.getDate(); //obteniendo dia
+    var ano = fecha.getFullYear(); //obteniendo año
+    if(dia<10)
+      dia='0'+dia; //agrega cero si el menor de 10
+    if(mes<10)
+      mes='0'+mes //agrega cero si el menor de 10
+    document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
+  }
+
  document.addEventListener("DOMContentLoaded", function (e) {
 
     var boton = document.getElementById("botonComentario");
@@ -105,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     var comentarioNuevo = document.getElementById("comentarioNuevo").value;
     var usuarioNuevo = document.getElementById("usuarioNuevo").value;
+    var fechaNueva = document.getElementById('fechaActual').value;
 
     document.getElementById("comentarioNuevo").value = "";
     document.getElementById("usuarioNuevo").value = "";
@@ -116,17 +140,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     <div id="generaComentario">
     <div class="list-group-item list-group-item-action">
     <div class="container mt-5">
-            <dt>Usuario </dt>
-                <dd> 
-                <p> ` + usuarioNuevo + `</p>
+                <dd> <p>` + usuarioNuevo + ` &nbsp; <small class="text-muted"> ` + fechaNueva + `</small> </p>
                 </dd>    
-            
 
-                 <dt>Descripción</dt>
                  <dd>
                      <p> ` + comentarioNuevo + `</p>
                  </dd>
-
             </div>        
         </div>
     </div>
