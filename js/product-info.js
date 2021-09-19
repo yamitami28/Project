@@ -29,20 +29,20 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             product = resultObj.data;
 
-            let productNameHTML  = document.getElementById("productName");
-                let productDescriptionHTML = document.getElementById("productDescription");
-                let productCostHTML = document.getElementById("productCost");
-                let productSoldCountHTML = document.getElementById("productSoldCount");
-                let productCategoryHTML = document.getElementById("productCategory");
-                let productRelatedProductsHTML = document.getElementById("productRelatedProducts");
+                let productName  = document.getElementById("productName");
+                let productDescription = document.getElementById("productDescription");
+                let productCost = document.getElementById("productCost");
+                let productSoldCount = document.getElementById("productSoldCount");
+                let productCategory = document.getElementById("productCategory");
+                let productRelatedProducts = document.getElementById("productRelatedProducts");
     
             
-                productNameHTML.innerHTML = product.name;
-                productDescriptionHTML.innerHTML = product.description;
-                productCostHTML.innerHTML = product. currency + ` ` + product.cost;
-                productSoldCountHTML.innerHTML = `Producto vendido ` + product.soldCount + ` veces`;
-                productCategoryHTML.innerHTML = `Categoría: ` + product.category ;
-                productRelatedProductsHTML.innerHTML = product.relatedProducts;
+                productName.innerHTML = product.name;
+                productDescription.innerHTML = product.description;
+                productCost.innerHTML = product. currency + ` ` + product.cost;
+                productSoldCount.innerHTML = `Producto vendido ` + product.soldCount + ` veces`;
+                productCategory.innerHTML = `Categoría: ` + product.category ;
+                productRelatedProducts.innerHTML = product.relatedProducts;
     
                 //Muestro las imagenes en forma de galería
                 showImagesGallery(product.images);
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 document.addEventListener("DOMContentLoaded", function (e) {
     
-   
    
     function showComments(array){ 
 
@@ -64,31 +63,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
             <div class="container mt-5">
-                    <dt>Calificación</dt>
+                        <dd> 
+                        <p> ` + comments.user + ` &nbsp; <small class="text-muted"> ` + comments.dateTime + `</small> </p>
+                        </dd>    
+                         <dd>
+                             <p> ` + comments.description + `</p>
+                         </dd>
                         <dd>
-                            <p class="fa fa-star" id="productDescription"> ` + comments.score + `</p>
-                        </dd>
-                    <dt>Descripción</dt>
-                        <dd>
-                            <p> ` + comments.description + `</p>
-                        </dd>
-                    <dt>Usuario </dt>
-                        <dd>
-                            <p> ` + comments.user + `</p>
-                        </dd> 
-                    <dt>Tiempo de publicación</dt>
-                        <dd>
-                            <p> ` + comments.dateTime + `</p>
+                            <span class="fa fa-star marcado"> ` + comments.score + `</span>
                         </dd>
                 </div>        
             </div>
             `
     
             document.getElementById("comment").innerHTML = htmlContentToAppend;
+            
+
         }
+
     }
 
-    //la funcion getJSONData esta en init.js aca la estoy llamando
+    //la funcion getJSONData esta en init.js aca la estoy llamando\
 
        
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){ // resultObj es un nombre habitual
@@ -101,3 +96,42 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
  });
+
+ document.addEventListener("DOMContentLoaded", function (e) {
+
+    var boton = document.getElementById("botonComentario");
+
+    boton.addEventListener("click", function(){
+
+    var comentarioNuevo = document.getElementById("comentarioNuevo").value;
+    var usuarioNuevo = document.getElementById("usuarioNuevo").value;
+
+    document.getElementById("comentarioNuevo").value = "";
+    document.getElementById("usuarioNuevo").value = "";
+
+    let nuevoComentario = '';
+    
+    nuevoComentario += `
+    
+    <div id="generaComentario">
+    <div class="list-group-item list-group-item-action">
+    <div class="container mt-5">
+            <dt>Usuario </dt>
+                <dd> 
+                <p> ` + usuarioNuevo + `</p>
+                </dd>    
+            
+
+                 <dt>Descripción</dt>
+                 <dd>
+                     <p> ` + comentarioNuevo + `</p>
+                 </dd>
+
+            </div>        
+        </div>
+    </div>
+    `
+    document.getElementById("generaComentario").innerHTML += nuevoComentario
+
+    });
+});
