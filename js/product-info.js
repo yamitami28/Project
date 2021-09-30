@@ -33,22 +33,23 @@ document.addEventListener("DOMContentLoaded", function(e){
                 let productDescription = document.getElementById("productDescription");
                 let productCost = document.getElementById("productCost");
                 let productSoldCount = document.getElementById("productSoldCount");
-                let productCategory = document.getElementById("productCategory");
-                let productRelatedProducts = document.getElementById("productRelatedProducts");
-    
+                let productCategory = document.getElementById("productCategory");    
             
                 productName.innerHTML = product.name;
                 productDescription.innerHTML = product.description;
                 productCost.innerHTML = product. currency + ` ` + product.cost;
                 productSoldCount.innerHTML = `Producto vendido ` + product.soldCount + ` veces`;
                 productCategory.innerHTML = `Categoría: ` + product.category ;
-                productRelatedProducts.innerHTML = product.relatedProducts;
     
                 //Muestro las imagenes en forma de galería
                 showImagesGallery(product.images);
+
         }
     });
 });
+
+
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
     
