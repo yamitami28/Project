@@ -23,6 +23,53 @@ function showImagesGallery(array){
     }
 }
 
+function showRelatedProducts(array) {
+    let HTMLrelatedProducts = "";
+
+    for (let q = 0; q < array.length; q++) {
+ 
+       if (q == array.relatedProduct) {
+        HTMLrelatedProducts += `
+    
+    <div class="row">
+    <div class="col-3">
+        <img src="` + array.imgSrc + `" alt="` + array.description + `" class="img-thumbnail"   >
+    </div>
+    
+    <div class="col">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">`+ array.name +`</h4>
+            <small class="text-muted"> `+ array.currency +` ` + array.cost + `  </small>
+            
+        </div>
+       
+        <div>
+            <p> `+ array.description+ ` </p>
+            <small class="text-muted"> Ejemplares vendidos: ` + array.soldCount +` </small>
+        </div>
+    </div>    
+</div>    
+
+    `           
+       }
+        
+    }
+    
+    document.getElementById("productRelatedProducts").innerHTML = HTMLrelatedProducts
+}
+
+document.addEventListener("DOMContentLoaded", function(e){
+getJSONData(PRODUCTS_URL).then(function(resultObj){
+    if (resultObj.status === "ok")
+    
+    product = resultObj.data
+    
+    showRelatedProducts(product);
+     
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -43,11 +90,12 @@ document.addEventListener("DOMContentLoaded", function(e){
     
                 //Muestro las imagenes en forma de galería
                 showImagesGallery(product.images);
+               
 
-        }
+
+            }
     });
 });
-
 
 
 
@@ -69,9 +117,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 
                 <span class="fa fa-star marcado">  </span>
 
-                `
-            
-            
+                `           
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
             <div class="container mt-5">
@@ -94,9 +140,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
     }
-
-    //la funcion getJSONData esta en init.js aca la estoy llamando\
-
        
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){ // resultObj es un nombre habitual
         if (resultObj.status === "ok") 
@@ -108,8 +151,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
  });
-
-
 
  document.addEventListener("DOMContentLoaded", function (e) {
 

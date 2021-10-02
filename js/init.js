@@ -50,3 +50,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 document.getElementById("usuario").innerHTML = sessionStorage.getItem("usuarioDelEmail");
 });
 
+document.getElementById("cerrarSesion").onclick = function(e){
+
+  sessionStorage.removeItem('usuarioDelEmail');
+};
