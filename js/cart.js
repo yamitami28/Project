@@ -11,10 +11,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             HTMLCarrito += `
             
             <div class="list-group-item list-group-item-action"> 
-                <div class="row">
+              
+            <div class="row">
    
-                <div> <label > Cantidad del producto</label> <br> <input id="cantidadIngresada" type="number" ` + carrito.count +`>     
-                </div>
                     <div class="col-3">
                         <img src="` + carrito.src + `" class="img-thumbnail"   >
                     </div>
@@ -29,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function(e){
                 </div>        
             </div>
             `
-
+            document.getElementById("cantidadIngresada").value = carrito.count;
+            document.getElementById("cantidadIngresada").value = carrito.count;
             document.getElementById("productoCarrito").innerHTML = HTMLCarrito;
     }
 

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action"> 
-                <div class="row">
+                <div class="row" id="productoInfo`[i]`">
                     <div class="col-3">
                         <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail"   >
                     </div>
