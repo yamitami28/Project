@@ -44,9 +44,10 @@ document.addEventListener("DOMContentLoaded", function(e){ // espera a que cargu
                 function showRelatedProducts(auto) {
                     let HTMLrelatedProducts = "";
                 
-                    console.log(auto)
+                    
                     let relacionados = auto.relatedProducts
-                
+                    console.log(relacionados)
+                    
                     getJSONData(PRODUCTS_URL).then(function(resultObj){
                         if (resultObj.status === "ok")
                         {
